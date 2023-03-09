@@ -1,6 +1,14 @@
 # Unity ChatGPT Assistant Experiments
-Few examples with ChatGPT API where we create a ChatGPT Assistant in Unity.
+Few examples with ChatGPT API where we create a ChatGPT Assistant in Unity. This is all based on [my 🤖 ChatGPT with Unity video series on YouTube](https://www.youtube.com/watch?v=6pWoVRYNWws&list=PLQMQNmwN3Fvxec05vELA3D05-Y93LzFt_&index=6)
 
+🔔 *Support all my work by [Subscribing to YouTube](https://www.youtube.com/@dilmerv?sub_confirmation=1)* thank you !
+
+## ChatGPT Assistant Demo Scenes
+
+|Scenes||
+|---|---|
+|**ChatGPTAssistant.unity**: a ChatGPT assistant scene that shows you how to use ChatGPT API in Unity to create an AI assistant which explains how source generated source code works||
+|<img src="https://github.com/dilmerv/UnityChatGPTAssistant/blob/master/docs/images/ChatGPTAssistant_1.gif" width="300">|<img src="https://github.com/dilmerv/UnityChatGPTAssistant/blob/master/docs/images/ChatGPTAssistant_2.gif" width="300">|
 
 ## Unity Requirements:
 1. Unity 2021.3.8f or greater
