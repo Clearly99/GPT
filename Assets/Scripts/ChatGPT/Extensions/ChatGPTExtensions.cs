@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 
 public static class ChatGPTExtensions
 {
@@ -21,8 +20,8 @@ public static class ChatGPTExtensions
         // split due to explanations
         var codeLines = message.Split("```");
 
-        // extract code
-        var sourceCode = codeLines.FirstOrDefault(c => c.Contains(KEYWORD_USING) ||
+        // extract source code
+        chatGPTResponse.SourceCode = codeLines.FirstOrDefault(c => c.Contains(KEYWORD_USING) ||
             c.Contains(KEYWORD_PUBLIC_CLASS)).Trim();
 
         // extract explanations
@@ -36,9 +35,6 @@ public static class ChatGPTExtensions
                 chatGPTResponse.Explanation += f;
             chatGPTResponse.Explanation = chatGPTResponse.Explanation.Replace("\n\n", string.Empty);
         });
-
-        // handle this better
-        chatGPTResponse.Choices[0].Message.Content = sourceCode;
 
         return chatGPTResponse;
     }

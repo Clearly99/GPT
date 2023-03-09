@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -41,16 +40,6 @@ public class ChatGPTTester : MonoBehaviour
     [SerializeField]
     private ChatGPTResponse chatGPTResponseCache;
 
-
-    public string ChatGPTMessage
-    {
-        get
-        {
-            return (chatGPTResponseCache.Choices
-                .FirstOrDefault()?.Message?.Content ?? null) ?? string.Empty;
-        }
-    }
-
     public Color CompileButtonColor
     {
         set
@@ -64,6 +53,7 @@ public class ChatGPTTester : MonoBehaviour
         responseTimeText.text = string.Empty;
         compilerButton.interactable = false;
 
+        // Step 1 - Ask a question (request payload) > call execute
         askButton.onClick.AddListener(() =>
         {
             compilerButton.interactable = false;
@@ -96,7 +86,7 @@ public class ChatGPTTester : MonoBehaviour
         }
         scenarioQuestionText.text = gptPrompt;
 
-        // communicate with ChatGPT API
+        // Step 2 - communicate with ChatGPT API (outgoing request)
         StartCoroutine(ChatGPTClient.Instance.Ask(gptPrompt, (response) =>
         {
             // UI
@@ -106,10 +96,9 @@ public class ChatGPTTester : MonoBehaviour
             chatGPTResponseCache = response;
             responseTimeText.text = $"Time: {response.ResponseTotalTime} ms";
             ChatGPTProgress.Instance.StopProgress();
-            Logger.Instance.LogInfo(ChatGPTMessage);
+            Logger.Instance.LogInfo(chatGPTResponseCache.SourceCode);
 
-
-            // let's have AI speak the explanations
+            // Step 3 - (incoming request) - send explanations to a TTS provider
             ChatGPTAssistant.Instance.ChatGPTAISpeak(response.Explanation);
 
             // immediate compilation optional
@@ -118,8 +107,6 @@ public class ChatGPTTester : MonoBehaviour
         }));
     }
 
-    public void ProcessAndCompileResponse()
-    {
-        RoslynCodeRunner.Instance.RunCode(ChatGPTMessage);
-    }
+    // Step 4 - (optional) - compile source code received by ChatGPT API
+    public void ProcessAndCompileResponse() => RoslynCodeRunner.Instance.RunCode(chatGPTResponseCache.SourceCode);
 }

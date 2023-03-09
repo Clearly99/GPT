@@ -69,6 +69,7 @@ public class ChatGPTAssistant : Singleton<ChatGPTAssistant>
 
     public void ChatGPTAISpeak(string text) => StartCoroutine(SpeakInChunks(text));
 
+
     private IEnumerator SpeakInChunks(string text)
     {
         List<string> captions = SplitIntoMultipleCaptions(text);

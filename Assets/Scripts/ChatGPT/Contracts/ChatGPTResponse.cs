@@ -25,5 +25,8 @@ public class ChatGPTResponse
     public double ResponseTotalTime { get; set; }
 
     [field: SerializeField]
+    public string SourceCode { get; set; }
+
+    [field: SerializeField]
     public string Explanation { get; set; }
 }
