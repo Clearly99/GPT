@@ -42,15 +42,19 @@ public class RoslynCodeRunner : Singleton<RoslynCodeRunner>
         {
             code = $"{(updatedCode ?? code)}";
 
+            // analyze the code and get class information
             SyntaxTree tree = CSharpSyntaxTree.ParseText(code);
             var root = (CompilationUnitSyntax)tree.GetRoot();
             var firstMember = root.Members[0];
             var classInfo = (ClassDeclarationSyntax)firstMember;
 
+            // attach generated class
             var addedCodeForGOExecution = $"GameObject.Find(\"{codeExecutionGameObjectName}\").AddComponent<{classInfo.Identifier.Value}>();";
 
+            // run generated class
             ScriptState<object> result = CSharpScript.RunAsync($"{code} {addedCodeForGOExecution}", SetDefaultImports()).Result;
             
+            // gather any results
             foreach (string var in resultVars)
             {
                 resultInfo += $"{result.GetVariable(var).Name}: {result.GetVariable(var).Value}\n";

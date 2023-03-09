@@ -46,7 +46,8 @@ public class ChatGPTTester : MonoBehaviour
     {
         get
         {
-            return (chatGPTResponseCache.Choices.FirstOrDefault()?.Message?.Content ?? null) ?? string.Empty;
+            return (chatGPTResponseCache.Choices
+                .FirstOrDefault()?.Message?.Content ?? null) ?? string.Empty;
         }
     }
 
@@ -67,20 +68,21 @@ public class ChatGPTTester : MonoBehaviour
         {
             compilerButton.interactable = false;
             CompileButtonColor = Color.white;
-
             Execute();
         });
     }
 
     public void Execute()
     {
+        // ui
         gptPrompt = $"{chatGPTQuestion.promptPrefixConstant} {chatGPTQuestion.prompt}";
         scenarioTitleText.text = chatGPTQuestion.scenarioTitle;
         askButton.interactable = false;
-
-        ChatGPTAssistant.Instance.SetCharacterAssistantRoll(true);
         ChatGPTProgress.Instance.StartProgress("Generating source code please wait");
 
+        // animations
+        ChatGPTAssistant.Instance.SetCharacterAssistantRoll(true);
+        
         // handle replacements
         Array.ForEach(chatGPTQuestion.replacements, r =>
         {
@@ -92,26 +94,25 @@ public class ChatGPTTester : MonoBehaviour
         {
             gptPrompt += $", {string.Join(',', chatGPTQuestion.reminders)}";
         }
-
         scenarioQuestionText.text = gptPrompt;
 
+        // communicate with ChatGPT API
         StartCoroutine(ChatGPTClient.Instance.Ask(gptPrompt, (response) =>
         {
+            // UI
             askButton.interactable = true;
-
             CompileButtonColor = Color.green;
-
             compilerButton.interactable = true;
             chatGPTResponseCache = response;
             responseTimeText.text = $"Time: {response.ResponseTotalTime} ms";
-
             ChatGPTProgress.Instance.StopProgress();
-
             Logger.Instance.LogInfo(ChatGPTMessage);
+
 
             // let's have AI speak the explanations
             ChatGPTAssistant.Instance.ChatGPTAISpeak(response.Explanation);
 
+            // immediate compilation optional
             if (immediateCompilation)
                 ProcessAndCompileResponse();
         }));
