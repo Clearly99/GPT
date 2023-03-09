@@ -7,7 +7,7 @@ Few examples with ChatGPT API where we create a ChatGPT Assistant in Unity. This
 
 |Scenes||
 |---|---|
-|**ChatGPTAssistant.unity**: a ChatGPT assistant scene that shows you how to use ChatGPT API in Unity to create an AI assistant which explains how source generated source code works||
+|**ChatGPTAssistant.unity**: a ChatGPT assistant scene that shows you how to use ChatGPT API in Unity to create an AI assistant which explains how source generated source code works|**ChatGPTAssistant.unity**: showing you how generated C# code can also be compiled at runtime by using Roslyn C# compiler which we embedded in a previous video|
 |<img src="https://github.com/dilmerv/UnityChatGPTAssistant/blob/master/docs/images/ChatGPTAssistant_1.gif" width="300">|<img src="https://github.com/dilmerv/UnityChatGPTAssistant/blob/master/docs/images/ChatGPTAssistant_2.gif" width="300">|
 
 ## Unity Requirements:
