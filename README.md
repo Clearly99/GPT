@@ -4,6 +4,7 @@ Few examples with ChatGPT API where we create a ChatGPT Assistant in Unity. This
 🔔 *Support all my work by [Subscribing to YouTube](https://www.youtube.com/@dilmerv?sub_confirmation=1)* thank you !
 
 ## ChatGPT Assistant Demo Scenes
+📢 Feel free to watch a small video from the scenes shown below on this [🎥 Twitter video post](https://twitter.com/Dilmerv/status/1633670322846318592)
 
 |Scenes||
 |---|---|
