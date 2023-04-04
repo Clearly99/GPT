@@ -19,7 +19,7 @@ Few examples with ChatGPT API where we create a ChatGPT Assistant in Unity. This
 5. Get a new [API Key](https://platform.openai.com/account/api-keys) and your [API Organization](https://platform.openai.com/account/org-settings)
 6. Update ChatGPTSettings file located under Assets/Settings/ChatGPT/
    
-   <img src="https://github.com/dilmerv/UnityChatGPTAssistant/blob/master/docs/images/ChatGPTSettings.png" width="300">
+   <img src="https://raw.githubusercontent.com/dilmerv/UnityChatGPTAssistant/master/docs/images/ChatGPTSettings.png?token=GHSAT0AAAAAAB7QR5R3FQDRXRKTH3NYEZVEZBMUF2Q" width="300">
 
 7. Each scene has a ChatGPTTester game object & script in the hierarchy, feel free to associate a new ChatGPTQuestion scriptable object as a reference as shown below:
 
