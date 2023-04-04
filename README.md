@@ -23,4 +23,4 @@ Few examples with ChatGPT API where we create a ChatGPT Assistant in Unity. This
 
 7. Each scene has a ChatGPTTester game object & script in the hierarchy, feel free to associate a new ChatGPTQuestion scriptable object as a reference as shown below:
 
-   <img src="https://github.com/dilmerv/UnityChatGPTAssistant/blob/master/docs/images/ChatGPTQuestion.png" width="300">
+   <img src="https://raw.githubusercontent.com/dilmerv/UnityChatGPTAssistant/master/docs/images/ChatGPTQuestion.png?token=GHSAT0AAAAAAB7QR5R22JLK6KZSN5JGWDYCZBMUF3Q" width="300">
